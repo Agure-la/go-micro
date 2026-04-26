@@ -9,10 +9,11 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
 )
-
+	
 type DatabaseClient interface {
 	Ready() bool
 	GetAllCustomers(ctx context.Context, emailAddress string) ([]models.Customer, error)
+	AddCustomer(ctx context.Context, customer *models.Customer)(*models.Customer, error)
 	GetAllProducts(ctx context.Context,vendoID string)([]models.Product, error)
 	GetAllServices(ctx context.Context)([]models.Service, error)
 	GetAllVendors(ctx context.Context)([]models.Vendo, error)
